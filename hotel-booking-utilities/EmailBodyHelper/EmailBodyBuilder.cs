@@ -19,7 +19,7 @@ namespace hotel_booking_utilities.EmailBodyHelper
                 if (role == UserRoles.Admin || role == UserRoles.HotelManager)
                 {
                     //link = _url.Action(linkName, controllerName, new { user.Email, token }, scheme);
-                    link = $"https://hoteldotnetmvc.herokuapp.com/{controllerName}/{linkName}?email={user.Email}&token={token}";
+                    link = $"https://hotelierng.herokuapp.com/{controllerName}/{linkName}?email={user.Email}&token={token}";
                 }
                 else
                 {
@@ -34,7 +34,7 @@ namespace hotel_booking_utilities.EmailBodyHelper
         }
         public static async Task<string> GetEmailBody(string emailTempPath, string token, string email)
         {
-            var link = $"https://hoteldotnetmvc.herokuapp.com/Manager/RegisterManager?email={email}&token={token}";
+            var link = $"https://hotelierng.herokuapp.com/Manager/RegisterManager?email={email}&token={token}";
             var temp = await File.ReadAllTextAsync(Path.Combine(Directory.GetCurrentDirectory(), emailTempPath));
             var emailBody = temp.Replace("**link**", link);
             return emailBody;
